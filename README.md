@@ -83,7 +83,13 @@ python train.py
 
 ---
 
-## Author
+## Contact and Feedback
 
-**Shruti Pingle**
+
+**Data Analyst:** Shruti Pingle
+
+**LinkedIn:** [Profile](https://www.linkedin.com/in/shruti-pingle-aa8034196)
+
+**Email:** [shrutipingle02\@gmail.com](mailto:shrutipingle02@gmail.com)
+
 
