@@ -19,5 +19,5 @@ python train.py
 This downloads the PneumoniaMNIST dataset automatically and prepares train/validation/test DataLoaders.
 
 ## Dataset
+[PneumoniaMNIST](https://www.tensorflow.org/datasets/catalog/pneumonia_mnist) — pediatric chest X-ray images for binary pneumonia classification, part of the [MedMNIST](https://medmnist.com/) collection.
 
-[PneumoniaMNIST](https://medmnist.com/) — part of the MedMNIST collection of standardized medical imaging datasets.
