@@ -21,6 +21,7 @@ data_transform = transforms.Compose([
     transforms.Normalize(mean=[0.5], std=[0.5])
 ])
 
+
 # load the three splits: train (to learn from), val (to check progress),
 # test (final, unseen accuracy check) — download=True grabs the data automatically
 train_dataset = PneumoniaMNIST(split='train', transform=data_transform, download=True)
