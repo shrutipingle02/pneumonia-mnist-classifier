@@ -52,7 +52,7 @@ A custom CNN built with PyTorch for binary chest X-ray classification.
 ## Results
 
 - Successfully trained a CNN for binary chest X-ray classification.
-- Saved the trained model as `pneumonia_model.pth`.
+- Saved the trained model as `pneumonia_model.pth`
 - Generated predictions on unseen test images.
 
 ### Sample Predictions
