@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PneumoNet</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-state="empty">
+
+<!-- ================= TOP BAR ================= -->
+<header class="topbar">
+  <div class="topbar-left">
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2l2.4 5.1L20 8.2l-4 4.2.9 5.6-4.9-2.7-4.9 2.7.9-5.6-4-4.2 5.6-1.1z"/>
+      </svg>
+      <span>PneumoNet</span>
+    </div>
+    <span class="divider"></span>
+    <button class="back" id="backBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      Back
+    </button>
+  </div>
+
+  <div class="topbar-center">
+    <div class="chip">
+      <span class="avatar avatar--sm">AC</span>
+      <span class="chip-label" id="operatorName">Alex Chan</span>
+      <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="chip">
+      <span class="chip-label" id="todayDate">—</span>
+      <svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+        <rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="topbar-right">
+    <button class="icon-btn" title="Model status" id="statusBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+      <span class="pip" id="statusPip"></span>
+    </button>
+    <button class="icon-btn" title="Notifications">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/>
+      </svg>
+    </button>
+    <button class="icon-btn" title="Settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+    <span class="avatar avatar--md">AC</span>
+  </div>
+</header>
+
+
+<!-- ================= MAIN ================= -->
+<main class="stage">
+
+  <!-- ---------- LEFT: workspace ---------- -->
+  <section class="workspace">
+
+    <div class="ws-head">
+      <!-- thumbnail of the current scan -->
+      <div class="thumb-card" id="thumbCard">
+        <span class="thumb-badge" id="thumbBadge">—</span>
+        <div class="thumb-img" id="thumbImg"></div>
+        <div class="thumb-tools">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h18M6 9l-3 3 3 3M18 9l3 3-3 3"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20L20 4M4 20h7M4 20v-7"/></svg>
+        </div>
+      </div>
+
+      <div class="ws-title">
+        <h1 id="headline">Preliminary<br>diagnosis</h1>
+        <dl class="kv">
+          <div><dt>Pneumonia probability</dt><dd id="kvConfidence">—</dd></div>
+          <div><dt>Inference</dt><dd id="kvInference">—</dd></div>
+          <div><dt>Scan ref</dt><dd id="kvRef">—</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <!-- viewer -->
+    <div class="viewer">
+      <div class="dropzone" id="dropzone">
+        <span class="plus">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+        <p class="dz-title">Drag &amp; drop a chest X-ray</p>
+        <p class="dz-sub">or click to browse &middot; PNG, JPG</p>
+      </div>
+
+      <img class="xray" id="xray" alt="Uploaded chest X-ray" hidden>
+
+      <div class="scanline" id="scanline" hidden></div>
+    </div>
+
+    <!-- bottom actions -->
+    <div class="ws-actions">
+      <button class="cta" id="cta" disabled>
+        <span class="cta-spinner" id="ctaSpinner" hidden></span>
+        <span id="ctaLabel">Analyze scan</span>
+        <svg class="cta-icon" id="ctaIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" hidden>
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </button>
+      <button class="ghost" id="addScan">
+        Add scan
+        <span class="ghost-plus">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+      </button>
+    </div>
+
+    <input type="file" id="fileInput" accept="image/*" hidden>
+  </section>
+
+
+  <!-- ---------- RIGHT: analysis rail ---------- -->
+  <aside class="rail">
+
+    <!-- verdict card (light, frosted) -->
+    <article class="card card--light" id="verdictCard">
+      <header class="vc-head">
+        <span class="avatar avatar--lg" id="vcAvatar">AI</span>
+        <div class="vc-who">
+          <strong id="vcTitle">PneumoNet model</strong>
+          <span id="vcSub">CNN &middot; 105,281 parameters</span>
+        </div>
+        <span class="vc-badge" id="vcBadge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </span>
+      </header>
+
+      <p class="vc-body">
+        <span class="vc-lead" id="vcLead">Awaiting scan.</span>
+        <span id="vcText">Upload a chest X-ray to run the model.</span>
+      </p>
+
+      <div class="meter" id="meter" hidden>
+        <div class="meter-fill" id="meterFill"></div>
+      </div>
+    </article>
+
+    <!-- performance card -->
+    <article class="card">
+      <header class="card-head">
+        <h2>Model performance</h2>
+        <span class="pill" id="perfPill">test set n=624</span>
+      </header>
+      <div class="perf">
+        <div class="perf-item">
+          <span class="perf-value" id="perfSens">—</span>
+          <span class="perf-label">Sensitivity</span>
+          <span class="perf-note">catches pneumonia</span>
+        </div>
+        <div class="perf-item">
+          <span class="perf-value" id="perfSpec">—</span>
+          <span class="perf-label">Specificity</span>
+          <span class="perf-note">catches normal</span>
+        </div>
+        <div class="perf-item">
+          <span class="perf-value" id="perfAuc">—</span>
+          <span class="perf-label">AUC</span>
+          <span class="perf-note">class separation</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- session history -->
+    <article class="card">
+      <header class="card-head">
+        <h2>Scans this session</h2>
+        <span class="pill" id="histCount">0</span>
+      </header>
+      <div class="history" id="history">
+        <p class="history-empty" id="historyEmpty">Analysed scans appear here.</p>
+      </div>
+    </article>
+
+    <p class="disclaimer">
+      Research demo trained on 28&times;28 PneumoniaMNIST images.
+      <strong>Not a medical device. Not for clinical use.</strong>
+    </p>
+  </aside>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
