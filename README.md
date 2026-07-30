@@ -69,23 +69,7 @@ Measured on the 624-image held-out test set:
 | Specificity | 56.4% | of healthy patients, how many were correctly cleared |
 | AUC | 0.934 | how well the model separates the two classes |
 
-Confusion matrix:
 
-```
-                  predicted normal   predicted pneumonia
-true normal                    132                   102
-true pneumonia                   2                   388
-```
-
-### Reading these numbers honestly
-
-Accuracy on its own is misleading here. The test set is 62.5% pneumonia, so always guessing "pneumonia" would already score 62.5%.
-
-The real story is in the other two numbers. The model catches 388 of 390 pneumonia cases, but flags 102 of 234 healthy patients as sick. It is heavily biased toward predicting pneumonia.
-
-That bias is not a training failure. An AUC of 0.934 means the model separates the two classes well — the problem is the decision threshold. Anything above a predicted probability of 0.5 is called pneumonia, and 0.5 is simply not the right cut-off for this model. Raising it would trade a little sensitivity for a large gain in specificity.
-
-There is also a gap between validation accuracy (96.4%) and test accuracy (83.3%). The cause is a distribution shift built into the dataset: the train and validation splits are 74.2% pneumonia, while the test split is 62.5%. A model that leans toward guessing pneumonia looks better on validation than it deserves to.
 
 ### Sample Predictions
 
