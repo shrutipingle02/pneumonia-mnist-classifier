@@ -122,27 +122,23 @@ Every value shown in the interface comes from the model or the uploaded file; th
 
 ### Running it
 
-Two terminals, from the repository root.
+You need two terminal windows open at the same time.
 
-**Terminal 1 — backend:**
+**Terminal 1 — start the model:**
 
 ```bash
 cd app/backend
 python app.py
 ```
 
-**Terminal 2 — frontend:**
+**Terminal 2 — start the web page:**
 
 ```bash
 cd app/frontend
 python3 -m http.server 8000
 ```
 
-Then open **http://127.0.0.1:8000**
-
-Use `127.0.0.1` rather than `localhost`. Safari resolves `localhost` to the IPv6 address `::1`, where the backend is not listening, so the request hangs with no error. The backend runs on port 5001 rather than the Flask default of 5000, which macOS uses for AirPlay Receiver.
-
-Sample X-rays for testing are in `app/sample_xrays/`. Note that `normal_1.png` and `normal_9.png` are genuine false positives — included deliberately to show the specificity problem described above.
+Now open **http://127.0.0.1:8000** in your browser.
 
 ---
 
