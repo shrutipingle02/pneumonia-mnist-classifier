@@ -22,13 +22,7 @@ This project demonstrates an end-to-end medical image classification pipeline, i
 
 ## Project Workflow
 
-1. Prepare the PneumoniaMNIST dataset.
-2. Preprocess chest X-ray images.
-3. Train a Convolutional Neural Network (CNN).
-4. Evaluate the trained model.
-5. Generate predictions on unseen test images.
-6. Save the trained model for future inference.
-7. Serve the model through a web interface.
+Load and preprocess the X-ray images, train a CNN, evaluate it on the held-out test set, then serve the trained model through a web interface.
 
 ---
 
