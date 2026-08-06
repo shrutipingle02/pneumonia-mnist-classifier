@@ -16,7 +16,7 @@ This project demonstrates an end-to-end medical image classification pipeline, i
 - **Image Size:** 28 × 28 grayscale
 - **Classes:** Normal, Pneumonia
 
-**Dataset:** https://medmnist.com/
+**Dataset:** https://medmnist.com/ 
 
 ---
 
